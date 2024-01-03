@@ -1,0 +1,14 @@
+
+.button{
+    float: right;
+}
+.box{
+    margin: 150px;
+}
+
+@media screen and (max-width:768px) {
+    .box{
+        margin: 10px;
+        margin-left: 10px;
+    }
+}
