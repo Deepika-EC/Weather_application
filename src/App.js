@@ -1,7 +1,6 @@
 import { useState } from "react";
 import moment from "moment/moment";
 import fetchWeather from "./weatherfetch";
-import "./estyle.css"
 
 function App() {
   const [query, setQuery] = useState("")
@@ -24,50 +23,50 @@ function App() {
   }
 
   return (
-    <div className="box">
+    <div className="box my-5 mx-3">
       <div className="card">
         <div className="card-head p-3" style={{ backgroundColor: "palevioletred" }}>
           <h3 className="fst-italic text-center mb-2">Weather Application</h3>
-          <div className="row">
-            <div className="col-10" width="100%">
+          <div className="d-flex align-items-center">
+            <div className="flex-grow-1 ">
               <input value={query} onKeyPress={search} onChange={change} type="text" className="form-control" placeholder="Enter Country/State/District Name....!" />
             </div>
-            <div className="col">
+            <div className="mx-2">
               <button className="button" style={{ borderRadius: "20px" }} onClick={reload}><i class="fa-solid fa-arrows-rotate"></i></button>
             </div>
           </div>
         </div>
         {weather.main &&
           <div className="card-body" style={{ backgroundColor: "teal", color: "white", fontSize: "25px" }}>
-            <div className="row border-bottom border-black">
-              <div className="col border-end border-black">
+            <div className="d-flex align-items-center flex-column flex-md-row border-bottom border-black">
+              <div className="flex-grow-1">
                 {moment().format('dddd')} , {moment().format('LL')}
               </div>
-              <div className="col">
+              <div className="mt-2">
                 <p className="button">Description : {weather.weather[0].description}</p>
               </div>
             </div>
-            <div className="row border-bottom border-black">
-              <div className="col border-end border-black">
+            <div className="d-flex align-items-center flex-column flex-md-row border-bottom border-black my-1">
+              <div className="flex-grow-1">
                 Temperature : {Math.round(weather.main.temp)} &deg;C
               </div>
-              <div className="col">
+              <div className="mt-2">
                 <p className="button">Humidity : {weather.main.humidity} %</p>
               </div>
             </div>
-            <div className="row border-bottom border-black">
-              <div className="col border-end border-black">
+            <div className="d-flex align-items-center flex-column flex-md-row border-bottom border-black my-1">
+              <div className="flex-grow-1">
                 Sunrise : {new Date(weather.sys.sunrise * 1000).toLocaleTimeString('en-IN')}
               </div>
-              <div className="col">
+              <div className="mt-2">
                 <p className="button">Sunset : {new Date(weather.sys.sunset * 1000).toLocaleTimeString('en-IN')}</p>
-              </div><br />
+              </div>
             </div>
-            <div className="row border-bottom border-black">
-              <div className="col-6 border-end border-black">
+            <div className="d-flex align-items-center flex-column flex-md-row">
+              <div className="flex-grow-1">
                 Country/State/District : {weather.name}
               </div>
-              <div className="col">
+              <div className="mt-2">
                 <p className="button">Icon :<img src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`} alt="icon" /></p>
               </div>
             </div>
@@ -75,7 +74,6 @@ function App() {
         }
       </div>
     </div>
-    // </div>
   )
 }
 export default App;
