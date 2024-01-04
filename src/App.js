@@ -12,7 +12,7 @@ function App() {
   }
 
   const search = async (e) => {
-    if (e.code === "Enter") {
+    if (e.code == "Enter") {
       let data = await fetchWeather(query)
       setWeather(data)
     }
