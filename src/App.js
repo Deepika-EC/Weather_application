@@ -11,11 +11,16 @@ function App() {
     console.log(e.target.value)
   }
 
-  const search = async (e) => {
-    if (e.code == "Enter") {
-      let data = await fetchWeather(query)
-      setWeather(data)
-    }
+  // const search = async (e) => {
+  //   if (e.code == "Enter") {
+  //     let data = await fetchWeather(query)
+  //     setWeather(data)
+  //   }
+  // }
+
+  const search = async () => {
+    let data = await fetchWeather(query);
+    setWeather(data);
   }
 
   const reload = () => {
@@ -29,7 +34,12 @@ function App() {
           <h3 className="fst-italic text-center mb-2">Weather Application</h3>
           <div className="d-flex align-items-center">
             <div className="flex-grow-1 ">
-              <input value={query} onKeyPress={search} onChange={change} type="text" className="form-control" placeholder="Enter Country/State/District Name....!" />
+              <input value={query} onChange={change} type="text" className="form-control" placeholder="Enter Country/State/District Name....!" />
+            </div>
+            <div className="mx-2">
+              <button className="button" style={{ borderRadius: "20px" }} onClick={search}>
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
             </div>
             <div className="mx-2">
               <button className="button" style={{ borderRadius: "20px" }} onClick={reload}><i class="fa-solid fa-arrows-rotate"></i></button>
